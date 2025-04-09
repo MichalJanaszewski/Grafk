@@ -1,0 +1,17 @@
+import math
+
+SCREEN_WIDTH, SCREEN_HEIGHT = 1000, 900
+
+HOLD_START_DELAY = 400
+HOLD_REPEAT_INTERVAL = 50
+
+FOV_DEFAULT = 90
+MOVE_SPEED = 1
+ROT_SPEED = {
+    'x': math.pi / 60,
+    'y': math.pi / 40,
+    'z': math.pi / 20
+}
+ZOOM_STEP = 5
+FOV_LIMITS = (20, 120)
+CLIP_RECT = [0, 0, SCREEN_WIDTH, SCREEN_HEIGHT]
