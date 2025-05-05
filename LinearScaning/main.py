@@ -6,11 +6,11 @@ from camera import Camera
 
 def main():
     pygame.init()
-    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.DOUBLEBUF)
     clock = pygame.time.Clock()
 
     camera = Camera()
-    prisms = Prism.load_prisms_from_file("prisms.json")
+    prisms = Prism.load_prisms_from_file("prisms3.json")
     renderer = Renderer(screen, camera, prisms)
 
     renderer.render()
