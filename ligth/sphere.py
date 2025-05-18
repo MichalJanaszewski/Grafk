@@ -2,12 +2,9 @@ import math
 import numpy as np
 
 class Sphere:
-    def __init__(self, pos, ambient, diffuse, specular, shininess):
-        self.position = np.array(pos, dtype=np.float32)
-        self.ambient = np.array(ambient, dtype=np.float32)
-        self.diffuse = np.array(diffuse, dtype=np.float32)
-        self.specular = np.array(specular, dtype=np.float32)
-        self.shininess = shininess
+    def __init__(self, position, material):
+        self.position = np.array(position, dtype=np.float32)
+        self.material = material
 
 def create_sphere(radius=1.0, sectors=40, stacks=40):
     vertices = []

@@ -9,15 +9,14 @@ class Camera:
         self.world_up = pyrr.Vector3([0.0, 1.0, 0.0])
         self.yaw = yaw
         self.pitch = pitch
-        self.orientation = pyrr.Quaternion()  # tożsamościowy quaternion (brak obrotu)
+        self.orientation = pyrr.Quaternion()
         self.front = pyrr.vector3.create(0.0, 0.0, -1.0)
 
-        # Rozdzielne prędkości ruchu i rotacji
-        self.move_speed = 60.0
+        self.move_speed = 30.0
         self.rotation_speed = 60.0
 
-        self.sensitivity = 0.1  # może też zostawić na razie
-        self.roll = 0.0  # zostawiamy dla kompatybilności
+        self.sensitivity = 0.1
+        self.roll = 0.0
 
         self.update_vectors()
 
@@ -31,7 +30,7 @@ class Camera:
         self.up = pyrr.quaternion.apply_to_vector(self.orientation, base_up)
         self.up = pyrr.vector.normalize(self.up)
 
-        self.right = pyrr.vector3.cross(self.front, self.up)  # <-- Zmiana tutaj
+        self.right = pyrr.vector3.cross(self.front, self.up)
         self.right = pyrr.vector.normalize(self.right)
 
     def move(self, direction, deltaTime):
@@ -48,9 +47,8 @@ class Camera:
         pitch_rad = math.radians(-pitch_offset * self.rotation_speed)
         roll_rad = math.radians(roll_offset * self.rotation_speed)
 
-        self.update_vectors()  # aktualizujemy front, up, right
+        self.update_vectors()
 
-        # Rotacja yaw wokół lokalnej osi up, nie globalnej
         q_yaw = pyrr.quaternion.create_from_axis_rotation(self.up, yaw_rad)
         q_pitch = pyrr.quaternion.create_from_axis_rotation(self.right, pitch_rad)
         q_roll = pyrr.quaternion.create_from_axis_rotation(self.front, roll_rad)
